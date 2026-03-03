@@ -25,7 +25,9 @@ pipeline{
         }
         stage('Build Docker Image'){
             steps{
-                bat "docker build -t ${IMAGE_NAME} ."
+                dir('taskflow-api') {
+                    bat 'docker build -t santhoshsk3722/springboot-prod-api:latest .'
+                }
             }
         }
         stage('List Docker Images'){
