@@ -15,22 +15,22 @@ pipeline{
         }
         stage('Build Application'){
             steps{
-                sh 'mvn clean package -DskipTests'
+                bat 'mvn clean package -DskipTests'
             }
         }
         stage('Verify Build'){
             steps{
-                sh 'ls target'
+                bat 'ls target'
             }
         }
         stage('Build Docker Image'){
             steps{
-                sh "docker build -t ${IMAGE_NAME} ."
+                bat "docker build -t ${IMAGE_NAME} ."
             }
         }
         stage('List Docker Images'){
             steps{
-                sh 'docker images'
+                bat 'docker images'
             }
         }
     }
