@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        maven 'Maven3'
+        gradle 'Gradle'
     }
     environment{
         IMAGE_NAME = 'spring-boot-api'
@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Build Application'){
             steps{
-                bat 'mvn clean package -DskipTests'
+                bat 'gradle clean build -x test'
             }
         }
         stage('Verify Build'){
